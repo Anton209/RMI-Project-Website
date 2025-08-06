@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rabaul Metal Industries</title>
+  <style>
+    :root {
+      --primary-color: #1F2F45;
+      --secondary-color: #ffffff;
+      --background-color: #f5f5f5;
+      --text-color: #333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 0;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      padding: 20px 0;
+    }
+
+    header h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    #hero {
+      background-color: #e8ecf2;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    #hero h2 {
+      font-size: 2em;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    section {
+      padding: 40px 0;
+    }
+
+    section h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #services ul {
+      list-style: disc inside;
+      padding-left: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .project {
+      background-color: #fff;
+      padding: 20px;
+      border-left: 5px solid var(--primary-color);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form label {
+      font-weight: bold;
+    }
+
+    form input,
+    form textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #152232;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    #about img {
+      max-width: 85%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: block;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Rabaul Metal Industries</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero">
+    <div class="container">
+      <h2>Engineered Steel Solutions for PNG and Beyond</h2>
+      <p>Proudly Papua New Guinea-owned. Over 180 staff across 7 locations in the New Guinea Islands region.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto 20px;">
+        <strong>Rabaul Metal Industries (RMI)</strong> is a proudly Papua New Guinea-owned company and a leading manufacturer of high-quality steel products. With strategically located branches across the New Guinea Islands — including Rabaul, Kokopo, Kimbe, Kavieng, Buka, Palmalmal, and Namatanai — we serve a wide range of industrial, residential, and commercial construction needs.
+      </p>
+
+      <img src="Projects/images/Map of RMI Locations/Map-1.png" alt="Map of RMI locations">
+
+      <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+        Our facilities are equipped with industry-standard machinery and operated by a skilled local workforce. We use premium-grade materials, sourced primarily from New Zealand, to ensure durability and compliance with international standards — ideal for Papua New Guinea’s demanding tropical climate.
+      </p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <ul>
+        <li>Roll-formed Steel Products – Roofing & Cladding</li>
+        <li>Fabricated Steel Products – Stumps, Ovens, Kiln Pipes, Water Tanks</li>
+        <li>Structural Steel Design, Supply & Installation</li>
+        <li>Residential, Industrial, Civil, and Commercial Construction Projects</li>
+        <li>Small Civil Works – Gabion Walls, Rock Mattress Installation</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Featured Projects</h2>
+      <div class="project-list">
+        <div class="project">
+          <h3><a href="Projects/executive-apartments.html">Executive Apartments – Mosa, WNBP</a></h3>
+          <p>Custom structural steel designed and installed by RMI, with complex angles and spans.</p>
+        </div>
+        <div class="project">
+          <h3><a href="Projects/waraston-workshop.html">Waraston Workshop – WNBP</a></h3>
+          <p>72m x 30m clear-span hot-dip galvanized steel structure engineered by RMI.</p>
+        </div>
+        <div class="project">
+          <h3><a href="Projects/vuna-bosco-classroom.html">Vuna Bosco 8-in-1 Classroom – ENBP</a></h3>
+          <p>Heavy-duty steel classrooms offering greater fire resistance and structural integrity.</p>
+        </div>
+        <div class="project">
+          <h3><a href="Projects/kimbe-quarantine-facility.html">Covid-19 Quarantine Facility – Kimbe</a></h3>
+          <p>72-patient facility with staff housing and full amenities built for the Health Authority.</p>
+        </div>
+        <div class="project">
+          <h3><a href="Projects/hoskins-kapore-grandstands.html">Hoskins & Kapore Stadium Grandstands</a></h3>
+          <p>Steel-framed grandstands with optional change rooms and timber/aluminum seating.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p style="text-align: center;">Looking for custom steelwork, construction, or roll-form products? Let’s talk.</p>
+      <form action="https://formsubmit.co/ablyos@rmi.com.pg" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Contact Form Message from RMI Website">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="thanks.html">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Rabaul Metal Industries. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

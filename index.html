@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rabaul Metal Industries</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary-color: #1F2F45;
       --secondary-color: #ffffff;
+      --accent-color: #ffcc00;
       --background-color: #f5f5f5;
       --text-color: #333;
     }
@@ -19,7 +21,7 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
       line-height: 1.6;
@@ -29,80 +31,444 @@
       width: 90%;
       max-width: 1200px;
       margin: auto;
-      padding: 20px 0;
     }
 
-    header {
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
-      padding: 20px 0;
-    }
+    /* HEADER & NAV */
+    /* HEADER & NAV */
+header {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    header h1 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-    nav ul {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      list-style: none;
-      flex-wrap: wrap;
-    }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    nav a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      font-weight: bold;
-    }
+.logo img {
+  height: 40px;
+}
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+/* --- Center the navigation links --- */
+nav {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* centers the nav items */
+}
 
-    #hero {
-      background-color: #e8ecf2;
-      text-align: center;
-      padding: 60px 20px;
-    }
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
 
-    #hero h2 {
-      font-size: 2em;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-    }
+nav a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+    /* HERO SECTION */
+    /* HERO SECTION */
+#hero {
+  position: relative;
+  background: url('images/steelwork-bg.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); /* darker overlay for readability */
+}
+
+#hero h2, 
+#hero p {
+  position: relative;
+  z-index: 1;
+}
+
+#hero h2 {
+  font-size: 2.5em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#hero p {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: 15px auto 0;
+}
+
 
     section {
-      padding: 40px 0;
+      padding: 60px 0;
     }
-
     section h2 {
       color: var(--primary-color);
       margin-bottom: 20px;
       text-align: center;
+      font-family: 'Montserrat', sans-serif;
     }
 
-    #services ul {
-      list-style: disc inside;
-      padding-left: 20px;
-      max-width: 600px;
-      margin: auto;
+    /* ABOUT */
+    #about img {
+      max-width: 85%;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: block;
+      margin: 30px auto;
     }
 
-    .project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+
+/* SERVICES */
+#services {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#services h2 {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  margin: 40px 0 20px 0;
+  color: #222;
+}
+
+.services-grid {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Increased height */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full page width */
+  height: 100%; /* Full container height */
+  background: #000;
+  color: white;
+  border-radius: 0; /* Remove rounded corners for full width look */
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: opacity 0.6s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.service-card.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintain proportion while covering the entire area */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay and Text */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+.service-card:hover::before {
+  background: rgba(0,0,0,0.25);
+}
+
+.service-card h3,
+.service-card p {
+  position: relative;
+  z-index: 2;
+  color: white;
+  margin: 10px 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.service-card h3 {
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-top: 180px; /* Center text vertically */
+}
+
+.service-card p {
+  font-size: 1em;
+  color: #ddd;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+/* Overlay clickable link */
+.service-card a.overlay-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  z-index: 5;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* "View Service" hover text */
+.service-card::after {
+  content: "View Service →";
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+/* Navigation Buttons */
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s ease;
+}
+
+.slide-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.slide-btn.prev {
+  left: 20px;
+}
+
+.slide-btn.next {
+  right: 20px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .services-grid {
+    height: 400px;
+  }
+
+  .service-card h3 {
+    margin-top: 150px;
+    font-size: 1.5em;
+  }
+
+  .service-card p {
+    font-size: 0.9em;
+  }
+}
+
+    /* PROJECTS */
+   /* === PROJECTS GRID (T LAYOUT VERSION) === */
+.project-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+/* Top row — 3 images side by side */
+.project-row.top-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Bottom row — 2 images centered below */
+.project-row.bottom-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 750px; /* keeps it tighter for the "T" shape */
+}
+
+/* Each project card */
+.project {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  text-align: center;
+  width: 320px;
+}
+
+.project:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.project img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.project:hover img {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 15px;
+}
+
+.project h3 {
+  color: var(--primary-color);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15em;
+  margin-bottom: 8px;
+}
+
+.project p {
+  font-size: 0.95em;
+  color: #555;
+}
+
+/* Overlay button effect */
+.project a.overlay-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  z-index: 5;
+}
+
+.project::after {
+  content: "View Project →";
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(31, 47, 69, 0.85);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project:hover::after {
+  opacity: 1;
+}
+
+/* Responsive behavior */
+@media (max-width: 900px) {
+  .project-row.top-row,
+  .project-row.bottom-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project {
+    width: 90%;
+    max-width: 350px;
+  }
+}
+
+
+    /* CTA */
+    .cta {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: #000;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .cta-btn:hover {
+      background-color: #e6b800;
     }
 
-    .project {
-      background-color: #fff;
-      padding: 20px;
-      border-left: 5px solid var(--primary-color);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    }
-
+    /* CONTACT FORM */
     form {
       max-width: 600px;
       margin: auto;
@@ -110,18 +476,21 @@
       flex-direction: column;
       gap: 15px;
     }
-
     form label {
       font-weight: bold;
     }
-
     form input,
     form textarea {
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 5px rgba(31, 47, 69, 0.3);
+    }
     form button {
       background-color: var(--primary-color);
       color: var(--secondary-color);
@@ -129,12 +498,13 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
     }
-
     form button:hover {
       background-color: #152232;
     }
 
+    /* FOOTER */
     footer {
       background-color: var(--primary-color);
       color: var(--secondary-color);
@@ -142,21 +512,17 @@
       padding: 20px 0;
       margin-top: 40px;
     }
-
-    #about img {
-      max-width: 85%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      display: block;
-      margin: 30px auto;
-    }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
-    <div class="container">
-      <h1>Rabaul Metal Industries</h1>
+    <div class="container header-flex">
+      <div class="logo">
+        <img src="Projects/images/RMI Logo/RMI Logo blue background and oval.png" alt="RMI Logo">
+        <h1>Rabaul Metal Industries</h1>
+      </div>
       <nav>
         <ul>
           <li><a href="#about">About</a></li>
@@ -168,104 +534,180 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section id="hero">
-    <div class="container">
-      <h2>Engineered Steel Solutions for PNG and Beyond</h2>
-      <p>Proudly Papua New Guinea-owned. Over 235 staff across 7 locations in the New Guinea Islands region.</p>
-    </div>
+    <h2>Engineered Steel Solutions for PNG and Beyond</h2>
+    <p>Proudly Papua New Guinea-owned. Over 235 staff across 7 locations in the New Guinea Islands region.</p>
   </section>
 
+  <!-- ABOUT -->
   <section id="about">
     <div class="container">
       <h2>About Us</h2>
       <p style="text-align: center; max-width: 800px; margin: 0 auto 20px;">
-        <strong>Rabaul Metal Industries (RMI)</strong> is a proudly Papua New Guinea-owned company and a leading manufacturer of high-quality steel products. With strategically located branches across the New Guinea Islands — including Rabaul, Kokopo, Kimbe, Kavieng, Buka, Palmalmal, and Namatanai — we serve a wide range of industrial, residential, and commercial construction needs.
+        <strong>Rabaul Metal Industries (RMI)</strong> is a proudly Papua New Guinea owned company and a leading manufacturer of high-quality steel products...
       </p>
-
       <img src="Projects/images/Map of RMI Locations/Map-1.png" alt="Map of RMI locations">
-
       <p style="text-align: center; max-width: 800px; margin: 0 auto;">
-        Our facilities are equipped with industry-standard machinery and operated by a skilled local workforce. We use premium-grade materials, sourced primarily from New Zealand, to ensure durability and compliance with international standards — ideal for Papua New Guinea’s demanding tropical climate.
+        Our facilities are equipped with industry-standard machinery...
       </p>
     </div>
   </section>
 
-  <section id="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <ul>
-        <li>Roll-formed Steel Products – Roofing & Cladding</li>
-        <li>Fabricated Steel Products – Stumps, Ovens, Kiln Pipes, Water Tanks</li>
-        <li>Structural Steel Design, Supply & Installation</li>
-        <li>Residential, Industrial, Civil, and Commercial Construction Projects</li>
-        <li>Small Civil Works – Gabion Walls, Rock Mattress Installation</li>
-      </ul>
-    </div>
-  </section>
+  <!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <h2>Our Services</h2>
 
+    <!-- Service grid acts as a slideshow -->
+    <div class="services-grid">
+      <div class="service-card active">
+        <a href="sales-fabricated-steel.html" target="_blank" class="overlay-link"></a>
+        <img src="Projects/images/Services/Roll former image.png" alt="Roofing Icon">
+        <h3>Roll-formed Steel Products</h3>
+        <p>Roofing & Cladding solutions built for PNG’s climate.</p>
+      </div>
+
+      <div class="service-card">
+        <a href="sales-steel-products.html" target="_blank" class="overlay-link"></a>
+        <img src="Projects/images/Services/Steel Fabrication.png" alt="Fabrication Icon">
+        <h3>Fabricated Steel Products</h3>
+        <p>From stumps to ovens and water tanks.</p>
+      </div>
+
+      <div class="service-card">
+        <a href="sales-structural-steel.html" target="_blank" class="overlay-link"></a>
+        <img src="Projects/images/Executive Apartment/executive-1.png" alt="Structural Icon">
+        <h3>Structural Steel</h3>
+        <p>Design, supply & installation for any project.</p>
+      </div>
+
+      <!-- Navigation buttons -->
+      <button class="slide-btn prev">&#10094;</button>
+      <button class="slide-btn next">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+  <!-- PROJECTS -->
   <section id="projects">
-    <div class="container">
-      <h2>Featured Projects</h2>
-      <div class="project-list">
+  <div class="container">
+    <h2>Featured Projects</h2>
+
+    <div class="project-list">
+      <!-- Top Row (3 projects) -->
+      <div class="project-row top-row">
         <div class="project">
-          <h3><a href="Projects/executive-apartments.html">Executive Apartments – Mosa, WNBP</a></h3>
-          <p>Custom structural steel designed and installed by RMI, with complex angles and spans.</p>
+          <a href="Projects/executive-apartments.html" target="_blank" class="overlay-link"></a>
+          <img src="Projects/images/Executive Apartment/executive-5.png" alt="Executive Apartments">
+          <h3>Executive Apartments – Mosa, WNBP</h3>
+          <p>Custom structural steel with complex spans.</p>
         </div>
+
         <div class="project">
-          <h3><a href="Projects/waraston-workshop.html">Waraston Workshop – WNBP</a></h3>
-          <p>72m x 30m clear-span hot-dip galvanized steel structure engineered by RMI.</p>
+          <a href="Projects/waraston-workshop.html" target="_blank" class="overlay-link"></a>
+          <img src="Projects/images/Waraston Workshop/Waraston-1.png" alt="Waraston Workshop">
+          <h3>Waraston Workshop – WNBP</h3>
+          <p>72m x 30m clear-span hot-dip galvanized steel structure.</p>
         </div>
+
         <div class="project">
-          <h3><a href="Projects/vuna-bosco-classroom.html">Vuna Bosco 8-in-1 Classroom – ENBP</a></h3>
+          <a href="Projects/vuna-bosco-classroom.html" target="_blank" class="overlay-link"></a>
+          <img src="Projects/images/Vuba-Bosco Classroom/Vunabosco-6.png" alt="Vuna Bosco Classroom">
+          <h3>Vuna Bosco Classroom – ENBP</h3>
           <p>Heavy-duty steel classrooms offering greater fire resistance and structural integrity.</p>
         </div>
+      </div>
+
+      <!-- Bottom Row (2 projects) -->
+      <div class="project-row bottom-row">
         <div class="project">
-          <h3><a href="Projects/kimbe-quarantine-facility.html">Covid-19 Quarantine Facility – Kimbe</a></h3>
-          <p>72-patient facility with staff housing and full amenities built for the Health Authority.</p>
+          <a href="Projects/kimbe-quarantine-facility.html" target="_blank" class="overlay-link"></a>
+          <img src="Projects/images/Kimbe Quarantine Block/Interior-2.png" alt="Kimbe Quarantine Facility">
+          <h3>Kimbe Quarantine Facility – WNBP</h3>
+          <p>72 patient facility with staff housing and full amenities built for the Health Authority.</p>
         </div>
+
         <div class="project">
-          <h3><a href="Projects/hoskins-kapore-grandstands.html">Hoskins & Kapore Stadium Grandstands</a></h3>
+          <a href="Projects/hoskins-kapore-grandstands.html" target="_blank" class="overlay-link"></a>
+          <img src="Projects/images/Hoskins and Kopore Grandstands/Hoskins.png" alt="Hoskins and Kopore Grandstands">
+          <h3>Hoskins & Kopore Grandstands – WNBP</h3>
           <p>Steel-framed grandstands with optional change rooms and timber/aluminum seating.</p>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Need Quality Steelwork?</h2>
+    <p>Contact RMI today for a free consultation.</p>
+    <a href="#contact" class="cta-btn">Get in Touch</a>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
     <div class="container">
       <h2>Contact Us</h2>
-      <p style="text-align: center;">Looking for custom steelwork, construction, or roll-form products? Let’s talk.</p>
       <form action="https://formsubmit.co/ablyons@rmi.com.pg" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="New Contact Form Message from RMI Website">
         <input type="hidden" name="_template" value="box">
         <input type="hidden" name="_next" value="https://anton209.github.io/RMI-Project-Website/thanks.html">
-        
+
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" id="email" name="email" placeholder="your@email.com" required />
 
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" placeholder="How can we help you?" rows="5" required></textarea>
 
         <button type="submit">Send Message</button>
       </form>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <p>&copy; 2025 Rabaul Metal Industries. All rights reserved.</p>
     </div>
   </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const slides = document.querySelectorAll(".service-card");
+  const prevBtn = document.querySelector(".slide-btn.prev");
+  const nextBtn = document.querySelector(".slide-btn.next");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
+
+  // Auto-slide every 7 seconds
+  setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 7000);
+});
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-

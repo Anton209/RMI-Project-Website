@@ -35,97 +35,93 @@
 
     /* HEADER & NAV */
     /* HEADER & NAV */
-header { 
-background-color: var(--primary-color);
-color: var(--secondary-color);
-padding: 15px 0;
-position:fixed; 
-top: 0; 
-z-index: 1000; 
-text-align: center;
-}
-
-header { position: relative;
-   background-image: url("images/header-bg.jpg");
-    background-size: cover;
-     background-position: center;
-      height: 250px; 
-     } 
-     
-    header {
-  background-image: url("images/header-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
-}
-
-
-      
-.logo { 
-  display: flex; flex-direction: column;
-  align-items:center;
-  gap: 10px; } 
-  
-.logo p { 
-font-size: 30px; 
-margin: 0; 
-} 
-
-.logo img { 
-height: 60px; 
-}
-
-/* --- Center the navigation links --- */
-nav ul { display: flex; justify-content: center;
-gap: 30px; list-style: none;
-margin: 15px 0 0 0; padding: 0; 
-}
-
-nav a { color: var(--secondary-color);
-text-decoration: none;
-font-weight: normal;
-padding: 5px 10px;
-border-radius: 4px;
-transition: background 0.3s;
-font-size: large; 
-}
-
-nav a:hover { 
-background-color: rgba(255, 255, 255, 0.1); 
-}
-
-
-    /* HERO SECTION */
-    /* HERO SECTION */
-/* HERO Section */
-#hero {
+/* HEADER */
+.site-header {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 20px 0;
   position: relative;
-  background: url("projects/images/genesis-haven-hotel.jpg") center center no-repeat;
-  background-size: cover;      
-  min-height: 500px;           
-  display: flex;
-  align-items: center;         
-  justify-content: center;    
-  text-align: center;
-  color: rgb(255, 255, 255);
+  z-index: 10;
 }
 
-/* Optional overlay for readability */
-#hero::before {
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  height: 60px;
+}
+
+.logo p {
+  font-size: 30px;
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  margin-top: 15px;
+}
+
+nav a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.3s;
+  font-size: large;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  background: url("projects/images/Genesis Haven Hotel.jpg") center/cover no-repeat;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding-top: 60px; /* space under header */
+}
+
+.hero::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.4); /* dark overlay */
+  inset: 0;
+  background: rgba(0,0,0,0.4);
   z-index: 0;
 }
 
 .hero-text {
   position: relative;
-  z-index: 1;                  /* ensures text is above overlay */
+  z-index: 1;
   max-width: 800px;
   padding: 20px;
 }
+
+/* DOWNWARD ARROW (now part of hero) */
+.hero-arrow {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-top: 50px solid rgba(0,0,0,0.4); /* matches hero overlay */
+  z-index: 2;
+}
+
 
 #hero h2 {
   font-family: 'Century Gothic', sans-serif;
@@ -598,44 +594,47 @@ background-color: rgba(255, 255, 255, 0.1);
 <body>
 
   <!-- HEADER -->
-  <header>
-    <div class="container header-flex">
-      <div class="logo">
-  <a href="index1.html">
-    <img src="Projects/images/RMI Logo/RMI Logo.png" alt="RMI Logo">
-  </a>
-  <p>RABAUL METAL INDUSTRIES</p>
-      <nav>
-        <ul>
-          <li><a href="about.html">Our Company</a></li>
-          <li><a href="services.html">Our Services</a></li>
-          <li><a href="contact.html">Make an Enquiry</a></li>
-        </ul>
-      </nav>
-      
+<!-- HEADER -->
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-flex">
+    <div class="logo">
+      <a href="index1.html">
+        <img src="Projects/images/RMI Logo/RMI Logo.png" alt="RMI Logo">
+      </a>
+      <p>RABAUL METAL INDUSTRIES</p>
     </div>
-  </header>
 
-  <!-- HERO -->
-<section id="hero">
+    <nav>
+      <ul>
+        <li><a href="about.html">Our Company</a></li>
+        <li><a href="services.html">Our Services</a></li>
+        <li><a href="contact.html">Make an Enquiry</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO (with built‑in arrow) -->
+<section id="hero" class="hero">
   <div class="hero-text">
     <h2>Roofing Iron, Construction, Steel Fabrication.</h2>
+    <p>Providing top quality kapa and a high standard of customer service to the New Guinea Islands since 1954.</p>
 
-    <p>
-      Providing top quality kapa and a high standard of customer service to the New Guinea Islands since 1954.
-    </p>
-
-    <!-- NEW HIGHLIGHT BOX -->
     <div class="hero-highlights">
       <ul>
-        <li>Serving the New Guinea Islands since 1954</li>
+        <li>PNG Owned Since 1954</li>
         <li>Roll-Formed Roofing & Cladding</li>
         <li>Custom Steel Fabrication</li>
       </ul>
     </div>
-
   </div>
+
+  <!-- Arrow shape -->
+  <div class="hero-arrow"></div>
 </section>
+
+
 
   <!-- ABOUT -->
   <section id="about">

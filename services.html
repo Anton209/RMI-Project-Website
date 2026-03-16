@@ -1,406 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rabaul Metal Industries – Services</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RMI – Services</title>
 
-  <style>
-    :root {
-      --primary-color: #253A50;
-      --secondary-color: #ffffff;
-      --accent-color: #ffcc00;
-      --background-color: #f5f5f5;
-      --text-color: #333;
-    }
+<style>
+  :root {
+    --primary-color: #253A50;
+    --secondary-color: #ffffff;
+  }
 
-    * {margin:0; padding:0; box-sizing:border-box;}
+  body {
+    margin:0;
+    font-family:"Century Gothic", sans-serif;
+    background:#f5f5f5;
+  }
 
-    body {
-      font-family: 'Century Gothic', sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
+  /* HEADER */
+  .site-header {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 30px 0 20px;
+    text-align:center;
+  }
 
-    .container {width:90%; max-width:1200px; margin:auto;}
+  .site-header img {
+    height:70px;
+    margin-bottom:10px;
+  }
 
-    /* HEADER */
-    .site-header {
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
-      padding: 20px 0;
-      position: relative;
-      z-index: 10;
-    }
+  .rmi-subtitle {
+    font-size:22px;
+    margin:5px 0 20px;
+    letter-spacing:1px;
+  }
 
-    .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
+  nav ul {
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
 
-    .logo img {height:60px;}
-    .logo p {font-size:30px; margin:0;}
+  nav a {
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    padding:6px 12px;
+    border-radius:4px;
+    transition:0.3s;
+  }
 
-    nav ul {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      list-style: none;
-      margin-top: 15px;
-    }
+  nav a:hover {
+    background-color:rgba(255,255,255,0.15);
+  }
 
-    nav a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      transition: background 0.3s;
-      font-size: large;
-    }
+  /* SERVICE ROWS */
+  .service-row {
+    display:flex;
+    gap:30px;
+    width:90%;
+    max-width:1300px;
+    margin:40px auto;
+    align-items:flex-start;
+  }
 
-    nav a:hover {background-color: rgba(255,255,255,0.1);}
+  /* LEFT IMAGE CARD */
+  .service-card {
+    position:relative;
+    width:55%;
+    height:350px;
+    overflow:hidden;
+    border-radius:10px;
+    cursor:pointer;
+  }
 
-    /* MAIN LAYOUT */
-    .info-container {
-      display:flex;
-      gap:40px;
-      max-width:1100px;
-      margin:40px auto;
-    }
+  .service-card img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(40%) brightness(70%);
+    transition:0.5s ease;
+    transform:scale(1);
+  }
 
-    /* SLIDESHOW */
-    .slideshow {
-      position:relative;
-      width:400px;
-    }
+  .service-card:hover img {
+    filter:grayscale(0%) brightness(100%);
+    transform:scale(1.08);
+  }
 
-    .slideshow img {
-      width:100%;
-      border-radius:8px;
-      cursor:pointer;
-      filter: grayscale(40%) brightness(70%);
-      transition: transform 0.5s ease, filter 0.5s ease, opacity 0.6s ease;
-      transform: scale(1);
-      opacity: 0;
-    }
+  .service-title {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+    text-shadow:0 0 10px rgba(0,0,0,0.7);
+    pointer-events:none;
+  }
 
-    /* Fade-in class */
-    .slideshow img.fade-in {
-      opacity: 1;
-    }
+  /* RIGHT PANEL */
+  .service-panel {
+    width:45%;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    display:none;
+  }
 
-    /* Hover zoom + brighten */
-    .slideshow:hover img {
-      filter: grayscale(0%) brightness(100%);
-      transform: scale(1.05);
-    }
+  .service-panel img {
+    width:100%;
+    border-radius:8px;
+    margin-bottom:15px;
+  }
 
-    /* CLEAN TEXT OVERLAY (no bubble) */
-    .slide-title {
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%, -50%);
-      color:white;
-      font-size:22px;
-      font-weight:bold;
-      z-index:30;
-      pointer-events:none;
-      text-align:center;
+  .service-description {
+    background:#eee;
+    padding:15px;
+    border-radius:8px;
+    margin-bottom:20px;
+  }
 
-      /* bubble removed */
-      background:none;
-      padding:0;
-      border-radius:0;
-    }
+  .bubble {
+    display:inline-block;
+    background:#eee;
+    padding:10px 15px;
+    border-radius:20px;
+    margin:5px;
+    cursor:pointer;
+    transition:0.2s;
+  }
 
-    /* ARROWS */
-    .arrow {
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      font-size:30px;
-      background:rgba(0,0,0,0.5);
-      color:#fff;
-      padding:5px 10px;
-      cursor:pointer;
-      border-radius:4px;
-      display:none;
-      z-index:20;
-    }
+  .bubble:hover {
+    background:#ddd;
+  }
 
-    .arrow.left {left:10px;}
-    .arrow.right {right:10px;}
+  /* CTA SECTION */
+  .cta {
+    background-color: #b9b9b9;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    margin-top:60px;
+  }
 
-    /* DROPDOWN */
-    .dropdown-list {
-      display:none;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:15px;
-    }
+  .cta-btn {
+    display: inline-block;
+    background-color: #d3d3d3;
+    color: #000;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
 
-    .bubble {
-      background:#eee;
-      padding:10px 15px;
-      border-radius:20px;
-      cursor:pointer;
-      transition:0.2s;
-    }
+  .cta-btn:hover {
+    background-color: #e6b800;
+  }
 
-    .bubble:hover {background:#ddd;}
+  /* FOOTER */
+  footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 20px 0;
+  }
 
-    /* DETAILS PANEL */
-    .details-panel {
-      flex:1;
-      background:#fff;
-      padding:20px;
-      border-radius:8px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    }
+  .footer-links {
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    margin-bottom:15px;
+    padding:0;
+  }
 
-    .details-panel img {
-      max-width:400px;
-      width:100%;
-      border-radius:8px;
-      margin-bottom:15px;
-    }
+  .footer-links a {
+    color:white;
+    text-decoration:none;
+  }
 
-    /* FOOTER */
-    .site-footer {
-      background-color: var(--primary-color);
-      color: var(--secondary-color);
-      padding: 30px 0;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .site-footer .footer-links {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-bottom: 15px;
-      padding: 0;
-    }
-
-    .site-footer .footer-links a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .site-footer .footer-links a:hover {
-      color: var(--accent-color);
-    }
-
-    .cta-button {
-      display:inline-block;
-      margin-top:20px;
-      padding:12px 24px;
-      background-color: var(--accent-color);
-      color: var(--primary-color);
-      font-weight:bold;
-      text-decoration:none;
-      border-radius:6px;
-      transition: background 0.3s;
-    }
-
-    .cta-button:hover {background-color:#e6b800;}
-  </style>
+  .footer-links a:hover {
+    color:#ffcc00;
+  }
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="site-header">
-  <div class="container header-flex">
-    <div class="logo">
-      <a href="index.html"><img src="Projects/images/RMI Logo/RMI Logo.png" alt="RMI Logo"></a>
-      <p>RABAUL METAL INDUSTRIES</p>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="about.html">Our Company</a></li>
-        <li><a href="services.html">Our Services</a></li>
-        <li><a href="contact.html">Make an Enquiry</a></li>
-      </ul>
-    </nav>
-  </div>
+  <a href="index.html">
+    <img src="Projects/images/RMI Logo/RMI Logo.png" alt="RMI Logo">
+  </a>
+
+  <p class="rmi-subtitle">RABAUL METAL INDUSTRIES</p>
+
+  <nav>
+    <ul>
+      <li><a href="about.html">Our Company</a></li>
+      <li><a href="services.html">Our Services</a></li>
+      <li><a href="contact.html">Make an Enquiry</a></li>
+    </ul>
+  </nav>
 </header>
 
-<div class="info-container">
-
-  <!-- LEFT SIDE SLIDESHOW -->
-  <div class="slideshow" id="slideshow">
-    <img id="slideImage" src="projects/images/rollformed.jpg" alt="Service Image">
-    <div class="slide-title" id="slideTitle">Roll Formed Steel</div>
-
-    <div class="arrow left" id="prev">&#10094;</div>
-    <div class="arrow right" id="next">&#10095;</div>
-
-    <div class="dropdown-list" id="dropdownList"></div>
-  </div>
-
-  <!-- RIGHT SIDE DETAILS -->
-  <div class="details-panel">
-    <img id="detailImage" src="" alt="">
-    <p id="detailText">Click a product bubble to see details.</p>
-  </div>
-
-</div>
-
-<footer class="site-footer">
-  <div class="container">
-
-   <h2>Need Quality Steelwork?</h2>
-    <p>Contact RMI today for a free consultation.</p>
-    <a href="contact.html" class="cta-button">Get in Touch</a>
-  </div>
-</footer>
+<!-- SERVICES CONTAINER -->
+<div id="servicesContainer"></div>
 
 <script>
-  const services = [
-    {
-      name:"Roll Formed Steel",
-      img:"Projects/images/products/Gray image of Rollformer.jpg",
-      products:[
-        {name:"Roofing Iron", img:"projects/images/roofing.jpg", desc:"Durable roofing iron for all projects."},
-        {name:"Cladding", img:"projects/images/cladding.jpg", desc:"Protective cladding solutions."},
-        {name:"Gutters", img:"projects/images/gutters.jpg", desc:"Reliable gutter systems."},
-        {name:"Flashing", img:"projects/images/flashing.jpg", desc:"Weatherproof flashing products."}
-      ]
-    },
+const services = [
+  {
+    name:"Roll Formed Steel",
+    img:"Projects/images/products/Gray image of Rollformer.jpg",
+    description:"High‑quality roll‑formed roofing, cladding, gutters, and flashing designed for PNG’s climate.",
+    products:[
+      {name:"Roofing Iron", img:"projects/images/roofing.jpg", desc:"Durable roofing iron for all projects."},
+      {name:"Cladding", img:"projects/images/cladding.jpg", desc:"Protective cladding solutions."},
+      {name:"Gutters", img:"projects/images/gutters.jpg", desc:"Reliable gutter systems."},
+      {name:"Flashing", img:"projects/images/flashing.jpg", desc:"Weatherproof flashing products."}
+    ]
+  },
 
-    {
-      name:"Structural Steel",
-      img:"projects/images/Executive Apartments/executive-2.png",
-      products:[
-        {name:"Stairs", img:"projects/images/stairs.jpg", desc:"Custom steel stairs."},
-        {name:"Beams", img:"projects/images/beams.jpg", desc:"Strong beams for construction."}
-      ]
-    },
+  {
+    name:"Structural Steel",
+    img:"projects/images/Executive Apartments/executive-2.png",
+    description:"Custom structural steel fabrication for residential, commercial, and industrial projects.",
+    products:[
+      {name:"Stairs", img:"projects/images/stairs.jpg", desc:"Custom steel stairs."},
+      {name:"Beams", img:"projects/images/beams.jpg", desc:"Strong beams for construction."}
+    ]
+  },
 
-    {
-      name:"Fabricated Steel",
-      img:"projects/images/products/Steel Fabrication - Steel Trusses.jpg",
-      products:[
-        {name:"Bread Ovens", img:"projects/images/oven.jpg", desc:"Industrial bread ovens."},
-        {name:"Galvanised Tanks", img:"projects/images/tank.jpg", desc:"Rainwater tanks."},
-        {name:"Kiln Pipes", img:"projects/images/kiln.jpg", desc:"High-temp kiln pipes."},
-        {name:"Flue Pipes", img:"projects/images/flue.jpg", desc:"Durable flue pipes."},
-        {name:"Stub Ends", img:"projects/images/stub.jpg", desc:"Stub ends for piping."},
-        {name:"Hold Downs", img:"projects/images/hold.jpg", desc:"Steel hold downs."}
-      ]
-    },
+  {
+    name:"Fabricated Steel",
+    img:"projects/images/products/Steel Fabrication - Steel Trusses.jpg",
+    description:"Fabricated steel products including ovens, tanks, kiln pipes, flue pipes, and more.",
+    products:[
+      {name:"Bread Ovens", img:"projects/images/oven.jpg", desc:"Industrial bread ovens."},
+      {name:"Galvanised Tanks", img:"projects/images/tank.jpg", desc:"Rainwater tanks."},
+      {name:"Kiln Pipes", img:"projects/images/kiln.jpg", desc:"High‑temperature kiln pipes."},
+      {name:"Flue Pipes", img:"projects/images/flue.jpg", desc:"Durable flue pipes."}
+    ]
+  },
 
-    {
-      name:"Merchant Steel",
-      img:"projects/images/products/Merchant Steel - RHS.jpg",
-      products:[
-        {name:"Hollow Section", img:"projects/images/hollow.jpg", desc:"Various hollow sections."},
-        {name:"Flat Bar", img:"projects/images/flatbar.jpg", desc:"Flat bar steel."},
-        {name:"Flat Plates", img:"projects/images/plates.jpg", desc:"Flat plates for fabrication."},
-        {name:"Reo-bar", img:"projects/images/reobar.jpg", desc:"Reo-bar and mesh."},
-        {name:"Various Items", img:"projects/images/misc.jpg", desc:"Welding rods, nails, etc."}
-      ]
-    },
+  {
+    name:"Merchant Steel",
+    img:"projects/images/products/Merchant Steel - RHS.jpg",
+    description:"A wide range of merchant steel including hollow sections, flat bar, reo‑bar, and more.",
+    products:[
+      {name:"Hollow Section", img:"projects/images/hollow.jpg", desc:"Various hollow sections."},
+      {name:"Flat Bar", img:"projects/images/flatbar.jpg", desc:"Flat bar steel."},
+      {name:"Flat Plates", img:"projects/images/plates.jpg", desc:"Flat plates for fabrication."},
+      {name:"Reo-bar", img:"projects/images/reobar.jpg", desc:"Reo‑bar and mesh."}
+    ]
+  },
 
-    {
-      name:"Labor Hire",
-      img:"projects/images/Hire Boys - Kimbe.jpg",
-      products:[
-        {name:"Labor Hire", img:"projects/images/laborhire.jpg", desc:"Low-level construction projects."},
-        {name:"Machinery Hire", img:"projects/images/machinery.jpg", desc:"Telehandler, tipper truck, etc."},
-        {name:"Steel Fabrication", img:"projects/images/fabrication.jpg", desc:"Custom steel fabrication."},
-        {name:"Construction", img:"projects/images/construction.jpg", desc:"Full project design + labor."},
-        {name:"Genset Servicing", img:"projects/images/genset.jpg", desc:"Installing and servicing gensets for your business."}
-      ]
-    },
+  {
+    name:"Labor Hire",
+    img:"projects/images/Hire Boys - Kimbe.jpg",
+    description:"Reliable labor hire for construction, fabrication, machinery operation, and more.",
+    products:[
+      {name:"Labor Hire", img:"projects/images/laborhire.jpg", desc:"Low‑level construction projects."},
+      {name:"Machinery Hire", img:"projects/images/machinery.jpg", desc:"Telehandler, tipper truck, etc."},
+      {name:"Steel Fabrication", img:"projects/images/fabrication.jpg", desc:"Custom steel fabrication."},
+      {name:"Construction", img:"projects/images/construction.jpg", desc:"Full project design + labor."},
+      {name:"Genset Servicing", img:"projects/images/genset.jpg", desc:"Genset installation + servicing."}
+    ]
+  },
 
-    {
-      name:"Specialist Hire",
-      img:"projects/images/specialist.jpg",
-      products:[
-        {name:"Design", img:"projects/images/design.jpg", desc:"Drafting, documentation, steel detailing, shop drawings, concept design."},
-        {name:"Specialist Service", img:"projects/images/specialist1.jpg", desc:"Expert specialist hire."}
-      ]
-    }
-  ];
+  {
+    name:"Specialist Hire",
+    img:"projects/images/specialist.jpg",
+    description:"Specialist services including drafting, documentation, detailing, and expert hire.",
+    products:[
+      {name:"Design", img:"projects/images/design.jpg", desc:"Drafting, documentation, detailing."},
+      {name:"Specialist Service", img:"projects/images/specialist1.jpg", desc:"Expert specialist hire."}
+    ]
+  }
+];
 
-  let currentIndex = 0;
-  const slideImage = document.getElementById("slideImage");
-  const slideTitle = document.getElementById("slideTitle");
-  const dropdownList = document.getElementById("dropdownList");
-  const detailImage = document.getElementById("detailImage");
-  const detailText = document.getElementById("detailText");
-  const prev = document.getElementById("prev");
-  const next = document.getElementById("next");
-  const slideshow = document.getElementById("slideshow");
+const container = document.getElementById("servicesContainer");
 
-  let slideInterval = setInterval(nextSlide, 4000);
+/* Build each service row */
+services.forEach((s, index) => {
+  const row = document.createElement("div");
+  row.className = "service-row";
 
-  function showService(index){
-    const service = services[index];
+  row.innerHTML = `
+    <div class="service-card" onclick="togglePanel(${index})">
+      <img src="${s.img}">
+      <div class="service-title">${s.name}</div>
+    </div>
 
-    slideImage.classList.remove("fade-in");
-    slideImage.src = service.img;
+    <div class="service-panel" id="panel-${index}">
+      <img src="${s.img}">
+      <div class="service-description">${s.description}</div>
+      <div id="products-${index}"></div>
+      <p id="desc-${index}"></p>
+    </div>
+  `;
 
-    slideImage.onload = () => {
-      slideImage.classList.add("fade-in");
+  container.appendChild(row);
+
+  /* Add product bubbles */
+  const productContainer = row.querySelector(`#products-${index}`);
+
+  s.products.forEach(p => {
+    const bubble = document.createElement("div");
+    bubble.className = "bubble";
+    bubble.textContent = p.name;
+
+    bubble.onclick = () => {
+      row.querySelector(".service-panel img").src = p.img;
+      row.querySelector(`#desc-${index}`).textContent = p.desc;
     };
 
-    slideTitle.textContent = service.name;
-
-    dropdownList.innerHTML = "";
-
-    service.products.forEach(p=>{
-      const bubble = document.createElement("div");
-      bubble.className="bubble";
-      bubble.textContent=p.name;
-      bubble.onclick=()=>{
-        detailImage.src=p.img;
-        detailText.textContent=p.desc;
-      };
-      dropdownList.appendChild(bubble);
-    });
-  }
-
-  function nextSlide(){
-    currentIndex = (currentIndex+1)%services.length;
-    showService(currentIndex);
-  }
-
-  function prevSlide(){
-    currentIndex = (currentIndex-1+services.length)%services.length;
-    showService(currentIndex);
-  }
-
-  slideshow.addEventListener("mouseenter", () => {
-    clearInterval(slideInterval);
-    prev.style.display = "block";
-    next.style.display = "block";
+    productContainer.appendChild(bubble);
   });
+});
 
-  slideshow.addEventListener("mouseleave", () => {
-    slideInterval = setInterval(nextSlide, 4000);
-    prev.style.display = "none";
-    next.style.display = "none";
-  });
-
-  slideImage.addEventListener("click", ()=>{
-    dropdownList.style.display =
-      dropdownList.style.display==="flex" ? "none" : "flex";
-  });
-
-  prev.addEventListener("click", prevSlide);
-  next.addEventListener("click", nextSlide);
-
-  showService(currentIndex);
-  slideImage.classList.add("fade-in");
+/* Show/hide the correct panel */
+function togglePanel(i){
+  const panel = document.getElementById(`panel-${i}`);
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
 </script>
+
+<!-- CTA SECTION -->
+<section class="cta">
+  <h2>Need Quality Steelwork?</h2>
+  <p>Contact RMI today for a free consultation.</p>
+  <a href="contact.html" class="cta-btn">Get in Touch</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <ul class="footer-links">
+  </ul>
+  <p>&copy; 2026 Rabaul Metal Industries. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

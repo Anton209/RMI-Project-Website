@@ -194,7 +194,7 @@ nav a:hover {
 }
 
 .service-card {
-  position: absolute;
+  position: relative; /* REQUIRED FOR CLICK FIX */
   inset: 0;
   background: #000;
   color: white;
@@ -235,6 +235,18 @@ nav a:hover {
   margin: 10px auto;
 }
 
+/* ===========================
+   CLICK FIX — MAKE FULL CARD CLICKABLE
+   =========================== */
+.overlay-link {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+/* ===========================
+   SLIDER BUTTONS
+   =========================== */
 .service-card::after {
   content: "View Service →";
   position: absolute;
@@ -305,7 +317,7 @@ footer {
 }
 
 /* ===========================
-   MOBILE FIXES (MATCH OTHER PAGES)
+   MOBILE FIXES
    =========================== */
 @media (max-width: 768px) {
 

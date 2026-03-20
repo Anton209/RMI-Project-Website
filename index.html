@@ -202,7 +202,7 @@ nav a:hover {
   text-align: center;
   opacity: 0;
   transition: opacity 0.6s ease;
-  z-index: 1; /* BELOW buttons */
+  z-index: 1; /* BELOW overlay + buttons */
 }
 
 .service-card.active {
@@ -223,29 +223,52 @@ nav a:hover {
   background: rgba(0,0,0,0.45);
 }
 
-.service-card h3 {
+.service-card h3,
+.service-card p {
   position: relative;
+  z-index: 5;
+}
+
+.service-card h3 {
   margin-top: 180px;
   font-size: 1.8em;
-  z-index: 3;
 }
 
 .service-card p {
-  position: relative;
   font-size: 1em;
   color: #ddd;
   max-width: 600px;
   margin: 10px auto;
-  z-index: 3;
 }
 
 /* ===========================
-   CLICK FIX — FULL CARD CLICKABLE
+   OVERLAY TEXT (RESTORED)
+   =========================== */
+.service-card::after {
+  content: "View Service →";
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 25px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 6; /* ABOVE overlay-link, BELOW buttons */
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+/* ===========================
+   CLICKABLE OVERLAY
    =========================== */
 .overlay-link {
   position: absolute;
   inset: 0;
-  z-index: 4; /* BELOW buttons */
+  z-index: 4; /* BELOW overlay text, BELOW buttons */
 }
 
 /* ===========================
@@ -262,7 +285,7 @@ nav a:hover {
   padding: 12px 18px;
   cursor: pointer;
   border-radius: 50%;
-  z-index: 10; /* ABOVE overlay */
+  z-index: 10; /* TOPMOST */
 }
 
 .slide-btn.prev { left: 20px; }
@@ -398,6 +421,7 @@ footer {
   }
 }
 </style>
+
 
 
 

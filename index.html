@@ -266,6 +266,108 @@ nav a:hover {
   transform: scale(1.05);
 }
 
+
+  /* ===========================
+   SERVICES SLIDER
+   =========================== */
+.services-grid {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+/* Each card */
+.service-card {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 1;
+}
+
+.service-card.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Image sits at the back */
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;   /* make it part of the stacking context */
+  inset: 0;
+  z-index: 0;           /* push behind overlay + text */
+}
+
+/* Dark overlay behind text */
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;           /* above image, below text */
+}
+
+/* Text above everything */
+.service-card h3,
+.service-card p {
+  position: relative;
+  z-index: 2;           /* above overlay */
+  color: #fff;
+}
+
+.service-card h3 {
+  margin-top: 180px;
+  font-size: 1.8em;
+}
+
+.service-card p {
+  font-size: 1em;
+  color: #ddd;
+  max-width: 600px;
+  margin: 10px auto;
+  background: rgba(0,0,0,0.4); /* optional readability boost */
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+/* ===========================
+   SERVICE BUTTON
+   =========================== */
+.service-btn {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-color);
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 3; /* above text + overlay */
+}
+
+.service-btn:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+/* ===========================
+   CLICKABLE OVERLAY
+   =========================== */
+.overlay-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* below button, same layer as text */
+}
+
 /* ===========================
    CLICKABLE OVERLAY
    =========================== */
